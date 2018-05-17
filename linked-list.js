@@ -78,7 +78,7 @@ class LinkedList {
       tempNode.next= new _Node(item, null);
     }
   }
-
+  //Note: position must === number like an array index
   insertAt(item, position){
     if(this.head === null || position ===0) {
       return this.insertFirst(item);
@@ -93,7 +93,7 @@ class LinkedList {
         return this.insertLast(item);
       }
       if (currentNode.next === null && ticks !== position-1){
-        throw new Error ('wrong');
+        throw new Error ('position does not exist in list');
       }
       prevNode=currentNode;
       currentNode=currentNode.next;
@@ -148,7 +148,7 @@ class LinkedList {
 
 function main(){
     
-  const SLL= new LinkedList;
+  const SLL= new LinkedList();
 
   SLL.insertFirst('Apollo');
   SLL.insertLast('Boomer');
@@ -160,9 +160,53 @@ function main(){
   //   SLL.remove('squirrel'); //Item not found :)
 
   //   SLL.insertBefore('blah', 'Apollo');
-  SLL.insertAt('blah', 6);
-  console.log(JSON.stringify(SLL));
+  // SLL.insertAt('blah', 3);
+  // SLL.remove('Tauhida');
+  
   return SLL;
 }
 
 main();
+
+function display(list){
+  let currentNode=list.head;
+  
+  while(currentNode !== null){
+    console.log(currentNode.value);
+    currentNode = currentNode.next;
+  }
+
+}
+//display just prints to console
+// display(main());
+
+function size(list){
+  let currentNode = list.head;
+  let count=0;
+
+  if(!currentNode){
+    return count;
+  }
+  else{
+    count+=1;
+  }
+
+  while(currentNode.next !== null){
+    currentNode= currentNode.next;
+    count+=1;
+  }
+  return count;
+}
+// console.log(size(main()));
+
+function isEmpty(list){
+  if(list.head){
+    return false;
+  }
+  else{
+    return true;
+  }
+}
+// console.log(isEmpty(main()));
+
+// function findPrevious()
