@@ -166,7 +166,7 @@ function main(){
   return SLL;
 }
 
-main();
+console.log(main());
 
 function display(list){
   let currentNode=list.head;
