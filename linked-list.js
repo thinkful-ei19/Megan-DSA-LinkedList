@@ -209,4 +209,36 @@ function isEmpty(list){
 }
 // console.log(isEmpty(main()));
 
-// function findPrevious()
+function findPrevious(list, item){
+  let currNode=list.head;
+  let previousNode = list.head;
+
+  if(item===list.head.value){
+    throw new Error ('No List/No Previous Items In List');
+  }
+  
+  while((currNode !== null) && (currNode.value !== item)){
+    previousNode= currNode;
+    currNode = currNode.next;
+    if(currNode.next === null){
+      return null;
+    }
+  }
+  return previousNode.value;
+}
+
+// console.log(findPrevious(main(), 'Boomer'));
+
+function findLast(list){
+  if(list.head === null){
+    throw new Error('Not a list');
+  }
+  else{
+    let currNode= list.head;
+    while(currNode.next !== null){
+      currNode=currNode.next;
+    }
+    return currNode.value;
+  }
+}
+console.log(findLast(main()));
